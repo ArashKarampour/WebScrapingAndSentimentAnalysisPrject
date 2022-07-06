@@ -45,6 +45,7 @@ async function scrape (limit){
     //await page.screenshot({path: 'example.png'});  
     await autoscroll(page,limit);
     await clickForMore(page);
+    await page.waitForTimeout(5000);
     const results = await page.evaluate(() => {
         const fullNames = [];
         Array.from(document.querySelectorAll(".d4r55")).forEach( fname => fullNames.push(fname.innerText));
@@ -91,6 +92,7 @@ async function scrape2 (limit){
     
     await autoscroll(page,limit);
     await clickForMore(page);
+    await page.waitForTimeout(5000);
     const results = await page.evaluate(() => {
         const fullNames = [];
         Array.from(document.querySelectorAll(".d4r55")).forEach( fname => fullNames.push(fname.innerText));

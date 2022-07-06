@@ -6,6 +6,12 @@ mongoose
   .catch((err) => console.log("Couldn't connect to DB :", err));
 
 const  Review  = require("./models/review");
+const express = require("express");
+const app = express();
+
+app.get("/", async (req,res) => {
+    res.send("Hello!");
+});
 
 async function main(){
     try{
@@ -18,3 +24,5 @@ async function main(){
 }
 
 //main().then((res)=>console.log(res)).catch(e=>console.error(e));
+
+app.listen(3000,()=>console.log("listening to port 3000 ..."));
