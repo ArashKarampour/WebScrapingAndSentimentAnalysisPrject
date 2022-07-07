@@ -1,0 +1,62 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 1.2rem;
+    background-color: rgba(220, 207, 207, 0.881);
+    box-sizing: border-box;
+}
+
+div#paginationContainer{
+    display: flex;    
+    justify-content: center;
+    align-items: flex-end;    
+}
+
+ul#paginationUl{    
+    display: flex;
+    list-style: none;
+    padding: 1rem;
+    background-color: cadetblue;
+    
+}
+
+ul#paginationUl li{
+    margin: 0 1rem 0  0 ;
+    padding: 2px 5px;
+    background-color: rgb(42, 104, 165);    
+}
+
+ul#paginationUl li a{
+    color: beige;
+}
+
+ul#paginationUl li.activePage{
+    background-color: rgb(144, 42, 42);
+}
+
+
+a,a:visited{
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover{
+    color: rgb(173, 16, 16);
+}
+
+a:active{
+    color: aqua;
+}
+
+
+ul#reviews li {
+    margin-bottom: 5rem;
+}
+
+ul#reviews a{
+    background-color: rgb(134, 219, 6);
+    padding: 2px 7px;
+    border-radius: 1rem;
+}

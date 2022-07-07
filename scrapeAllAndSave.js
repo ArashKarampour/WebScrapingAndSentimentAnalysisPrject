@@ -159,9 +159,11 @@ async function getAllReviews(){
 async function scrapeAll(){
 
     try{
-        // const reviews = await getAllReviews();
-        // const results = await Review.insertMany(reviews); //just run these two line for one time to scrape what you need
-        // return results;                      
+        const reviews = await getAllReviews();
+        const results = await Review.insertMany(reviews); //just run these two line for one time to scrape what you need
+        return results; 
+        //return reviews;
+
     }catch(e){        
         return e;
     }

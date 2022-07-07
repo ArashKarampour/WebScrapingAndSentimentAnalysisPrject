@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Sentiment Analysis of Reviews</title>
+</head>
+<body>
+    <div>
+        <ul id="reviews">       
+            <% reviews.forEach( review => { %>     
+            <li>
+                <p style="background-color:gray;border-radius:5px;"><span style="color:white;font-weight: bold;"><%=review.name %>:</span> <span style="color:rgb(255, 255, 0);font-weight: bold;"><%=review.star%></span></p>
+                <p><%=review.comment %></p>                
+                <a href="/analyze/<%=review._id%>">Analyze</a>                
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+    <div id="paginationContainer">
+        <ul id="paginationUl">
+            <% if(firstPage > 1) { %>
+                <li>
+                    <a href="/?page=<%=firstPage-1%>">Previous</a>
+                </li>
+            <% } %>
+            <% for(let i = firstPage; i <= lastPage; ++i){ %>
+                <% if(pageNumber == i) { %>
+                    <li class="activePage">
+                        <a  href="/?page=<%=i%>"><%=i%></a>
+                    </li>
+                    <% continue; %>
+                <% } %>
+                <li>
+                    <a href="/?page=<%=i%>"><%=i%></a>
+                </li>
+                
+
+            <% } %>
+            <% if(lastPage < numberOfPages) { %>
+                <li>
+                    <a href="/?page=<%=lastPage+1%>">Next</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>
