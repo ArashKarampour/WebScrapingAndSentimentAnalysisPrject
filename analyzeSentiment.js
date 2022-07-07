@@ -125,6 +125,6 @@ function analyzeSentiment(review){
     return analysis_score;
 }
 
-// analyze("not good not bad");
+//analyzeSentiment("A disaster, they did not have cafe, lack of staff or it is lack of employees, very bad service …");
 
 module.exports = analyzeSentiment;

@@ -60,3 +60,59 @@ ul#reviews a{
     padding: 2px 7px;
     border-radius: 1rem;
 }
+
+
+
+/*Modal css*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    text-align: center;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #d1c8c8;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;  
+    font-size: 3rem;  
+    border-radius: 2rem;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }  
+  
+  button#ok{
+    background-color: greenyellow;
+    border-radius: 2rem;
+    color: whitesmoke;
+    font-size: 2rem;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+  /* End Modal css */

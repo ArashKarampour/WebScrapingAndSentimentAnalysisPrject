@@ -8,13 +8,28 @@
     <title>Sentiment Analysis of Reviews</title>
 </head>
 <body>
+
+    <!-- The Add Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="emoji"></div>
+          <div class="sentiment"></div>
+          <button id="ok">OK</button>
+        </div>
+  
+    </div>
+  
+
     <div>
         <ul id="reviews">       
             <% reviews.forEach( review => { %>     
-            <li>
+            <li class="review">
                 <p style="background-color:gray;border-radius:5px;"><span style="color:white;font-weight: bold;"><%=review.name %>:</span> <span style="color:rgb(255, 255, 0);font-weight: bold;"><%=review.star%></span></p>
-                <p><%=review.comment %></p>                
-                <a href="/analyze/<%=review._id%>">Analyze</a>                
+                <p class="comment"><%=review.comment %></p>                
+                <a class="analyze" href="/analyze/<%=review._id%>">Analyze</a>                
             </li>
             <% }); %>
         </ul>
@@ -46,5 +61,7 @@
             <% } %>
         </ul>
     </div>
+
+    <script src="/js/front.js"></script>
 </body>
 </html>
