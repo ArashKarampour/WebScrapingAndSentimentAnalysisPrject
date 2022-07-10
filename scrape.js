@@ -1,13 +1,16 @@
 const puppeteer = require('puppeteer');
 //Error.stackTraceLimit = Infinity;
-async function autoscroll(page,limit){
+async function autoscrollAndClick(page,limit){
     await page.evaluate(async (limit) => {
         //Error.stackTraceLimit = Infinity;
         await new Promise((resolve,rejcet) => {
             let intervalId = setInterval(() => {
+                //scroll the page:
                 let scrollHeight = document.querySelector("#QA0Szd > div > div > div.w6VYqd > div.bJzME.tTVLSc > div > div.e07Vkf.kA9KIf > div > div > div.m6QErb.DxyBCb.kA9KIf.dS8AEf").scrollHeight;
                 document.querySelector("#QA0Szd > div > div > div.w6VYqd > div.bJzME.tTVLSc > div > div.e07Vkf.kA9KIf > div > div > div.m6QErb.DxyBCb.kA9KIf.dS8AEf").scrollBy(0,scrollHeight);
-    
+                //Click on more to load the whole review
+                Array.from(document.querySelectorAll(".w8nwRe")).forEach( btn => btn.click()); 
+                //Check for limit:       
                 if(document.querySelectorAll(".d4r55").length >= limit){
                     clearInterval(intervalId);
                     return resolve();
@@ -23,12 +26,12 @@ async function autoscroll(page,limit){
 }
 
 
-async function clickForMore(page){
-    await page.evaluate(() => {
-        Array.from(document.querySelectorAll(".w8nwRe")).forEach( btn => btn.click());
-        return;
-    });
-}
+// async function clickForMore(page){
+//     await page.evaluate(() => {
+//         Array.from(document.querySelectorAll(".w8nwRe")).forEach( btn => btn.click());        
+//         return;
+//     });
+// }
 
 async function scrape (limit){
     const browser = await puppeteer.launch({headless:false});
@@ -43,9 +46,10 @@ async function scrape (limit){
     //await page.waitForNavigation();
     await page.waitForTimeout(5000);
     //await page.screenshot({path: 'example.png'});  
-    await autoscroll(page,limit);
-    await clickForMore(page);
-    await page.waitForTimeout(15000);
+    await autoscrollAndClick(page,limit);
+    //await page.waitForTimeout(2000);
+    //await clickForMore(page);
+    await page.waitForTimeout(10000);
     const results = await page.evaluate(() => {
         const fullNames = [];
         Array.from(document.querySelectorAll(".d4r55")).forEach( fname => fullNames.push(fname.innerText));
@@ -90,8 +94,9 @@ async function scrape2 (limit){
     await page.waitForNetworkIdle();
     await page.waitForTimeout(5000);
     
-    await autoscroll(page,limit);
-    await clickForMore(page);
+    await autoscrollAndClick(page,limit);
+    //await page.waitForTimeout(2000);
+    //await clickForMore(page);
     await page.waitForTimeout(10000);
     const results = await page.evaluate(() => {
         const fullNames = [];

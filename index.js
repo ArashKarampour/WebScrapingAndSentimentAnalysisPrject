@@ -68,6 +68,7 @@ async function main(){
     }
 }
 
+//run scrape all(about 1000 reviews or even more!):
 //main().then((res)=>console.log(res)).catch(e=>console.error(e));
 
 app.listen(3000,()=>console.log("listening to port 3000 ..."));

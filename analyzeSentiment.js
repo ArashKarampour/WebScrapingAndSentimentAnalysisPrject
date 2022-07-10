@@ -1,6 +1,7 @@
 const natural = require("natural");
 const stopword = require("stopword");
-
+let Sentiment = require('sentiment');
+let sentiment = new Sentiment();
 
 // For conversion of contractions to standard lexicon
 const wordDict = {
@@ -97,32 +98,33 @@ function analyzeSentiment(review){
     // NLP Logic
     // Convert all data to its standard form
     const lexData = convertToStandard(review);
-    console.log("Lexed Data: ",lexData);
+    //console.log("Lexed Data: ",lexData);
   
     // Convert all data to lowercase
     const lowerCaseData = convertTolowerCase(lexData);
-    console.log("LowerCase Format: ",lowerCaseData);
+    //console.log("LowerCase Format: ",lowerCaseData);
   
     // Remove non alphabets and special characters
     const onlyAlpha = removeNonAlpha(lowerCaseData);
     console.log("OnlyAlpha: ",onlyAlpha);
   
-    // Tokenization
-    const tokenConstructor = new natural.WordTokenizer();
-    const tokenizedData = tokenConstructor.tokenize(onlyAlpha);
-    console.log("Tokenized Data: ",tokenizedData);
+    // // Tokenization
+    // const tokenConstructor = new natural.WordTokenizer();
+    // const tokenizedData = tokenConstructor.tokenize(onlyAlpha);
+    // console.log("Tokenized Data: ",tokenizedData);
   
-    // Remove Stopwords
-    const filteredData = stopword.removeStopwords(tokenizedData);
-    console.log("After removing stopwords: ",filteredData);
+    // // Remove Stopwords
+    // const filteredData = stopword.removeStopwords(tokenizedData);
+    // console.log("After removing stopwords: ",filteredData);
   
-    // Stemming
-    const Sentianalyzer =
-    new natural.SentimentAnalyzer('English', natural.PorterStemmer, 'afinn');
-    const analysis_score = Sentianalyzer.getSentiment(filteredData);
+    // // Stemming
+    // const Sentianalyzer =
+    // new natural.SentimentAnalyzer('English', natural.PorterStemmer, 'afinn');
+    // const analysis_score = Sentianalyzer.getSentiment(filteredData);
+    let analysis_score = sentiment.analyze(onlyAlpha);
     console.log("Sentiment Score: ",analysis_score);
-    
-    return analysis_score;
+    //return analysis_score;
+    return analysis_score.comparative;
 }
 
 //analyzeSentiment("A disaster, they did not have cafe, lack of staff or it is lack of employees, very bad service …");
